@@ -10,7 +10,7 @@ Quick example
 ```shell
 git clone https://github.com/traducer/browserify-livereload.git
 cd browserify-livereload/example
-npm i && npmi run dev
+npm i && npm run dev
 ```
 
 open your browser to [http://localhost:8080](http://localhost:8080) and start messing with the src files
