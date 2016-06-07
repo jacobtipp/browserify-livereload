@@ -1,6 +1,6 @@
 # browserify-livereload
 
-This is a small livereload [browserify](http://browserify.org/) plugin. It is aimed for those who don't want to waste time with gulp plugins or pre-packaged developmnent servers.
+This is a small livereload [browserify](http://browserify.org/) plugin. It is aimed for those who don't want to waste time with gulp plugins or pre-packaged development servers.
 
 <a href="https://nodei.co/npm/browserify-livereload/"><img src="https://nodei.co/npm/browserify-livereload.png?downloads=true&downloadRank=true&stars=true"></a>
 
@@ -13,7 +13,7 @@ cd browserify-livereload/example
 npm i && npmi run dev
 ```
 
-open your browser to http://localhost:8080 and start messing with the src files
+open your browser to [http://localhost:8080](http://localhost:8080) and start messing with the src files
 
 
 Installation
@@ -37,15 +37,15 @@ const browserify = require('browserify')
 const livereload = require('browserify-livereload')
 
 const b = browserify({
-    entries: 'index.js'
-      cache: {},
-        packageCache: {},
-          debug: true
+    entries: 'index.js',
+    cache: {},
+    packageCache: {},
+    debug: true
 })
 
 b.plugin(livereload, {
     host: 'localhost',
-      port: 1337
+    port: 1337
 })
 ```
 
