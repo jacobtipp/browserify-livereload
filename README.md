@@ -4,6 +4,18 @@ This is a small livereload [browserify](http://browserify.org/) plugin. It is ai
 
 <a href="https://nodei.co/npm/browserify-livereload/"><img src="https://nodei.co/npm/browserify-livereload.png?downloads=true&downloadRank=true&stars=true"></a>
 
+Quick example
+-------------
+
+```shell
+git clone https://github.com/traducer/browserify-livereload.git
+cd browserify-livereload/example
+npm i && npmi run dev
+```
+
+open your browser to http://localhost:8080 and start messing with the src files
+
+
 Installation
 ------------
 ```shell
