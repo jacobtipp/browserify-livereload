@@ -13,7 +13,7 @@
     "browserify-plugin",
     "browser"
   ],
-  "author": "",
+  "author": "traducer",
   "license": "MIT",
   "dependencies": {
     "replacestream": "^4.0.0",
