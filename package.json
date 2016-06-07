@@ -2,7 +2,7 @@
   "name": "browserify-livereload",
   "version": "1.0.0",
   "description": "browserify livereload plugin",
-  "main": "lib/index.js",
+  "main": "./lib",
   "scripts": {
     "lint": "standard lib/*.js test/**/*.js",
     "test": "tape test/*.js && npm run lint"
