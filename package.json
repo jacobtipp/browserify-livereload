@@ -1,12 +1,28 @@
 {
   "name": "browserify-livereload",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "browserify livereload plugin",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard lib/*.js test/**/*.js",
+    "test": "tape test/*.js && npm run lint"
   },
-  "keywords": [],
+  "keywords": [
+    "browserify",
+    "livereload",
+    "browserify-plugin",
+    "browser"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "replacestream": "^4.0.0",
+    "socket.io": "^1.4.6",
+    "socket.io-client": "^1.4.6"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "standard": "^7.1.2",
+    "tape": "^4.5.1"
+  }
 }
