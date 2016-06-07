@@ -14,6 +14,10 @@
     "browser"
   ],
   "author": "traducer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/traducer/browserify-livereload.git"
+  },
   "license": "MIT",
   "dependencies": {
     "replacestream": "^4.0.0",
