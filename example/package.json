@@ -6,7 +6,8 @@
     "serve": "http-server -o"
   },
   "devDependencies": {
-    "watchify": "^3.7.0",
-    "browserify-livereload": "^1.0.0"
+    "browserify-livereload": "^1.0.0",
+    "http-server": "^0.9.0",
+    "watchify": "^3.7.0"
   }
 }
