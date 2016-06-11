@@ -16,26 +16,20 @@ function bundle () {
     .pipe(fs.createWriteStream(output))
 }
 
-b.plugin(livereload)
+test('outfile option', (t) => {
+  t.throws(() => b.plugin(livereload), /outfile option must be specified/, 'outfile needs to be specified when using plugin as API')
+  t.end()
+})
 
-test('socketio events, bundle events, file creation', (t) => {
-  b.on('bundle', (stream) => {
-    stream.on('error', err => t.fail(err.message))
-    stream.on('end', () => {
-      t.equal(b._mdeps.entries.length, 2)
-    })
+test('socketio events', (t) => {
+  b.plugin(livereload, {
+    outfile: output
   })
-
-  try {
-    fs.accessSync(path.join(__dirname, '..', 'lib', 'client.js'))
-    t.pass('file was created')
-  } catch (e) {
-    t.fail('no file was created')
-  }
 
   const socket = io('http://localhost:3001')
 
   socket.on('bundle', () => {
+    console.log('test')
     t.pass('bundle event was called')
     t.end()
     process.exit(0)
