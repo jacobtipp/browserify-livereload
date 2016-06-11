@@ -54,6 +54,6 @@ b.plugin(livereload, {
 How it Works
 -----------
 The plugin checks for an outfile option if you're programatically building your bundle. if running browserify/watchify from the command line you do not need to add an outfile option as it is already added.
-The plugin starts up a socket.io server on creation, when the end event from the bundle pipelineis triggered, the plugin will prepend a script to the bundle using node streams. The socket.io file is an immeditely invoked function expression that injects the socket.io-client script to the head of the document. This way if any errors occur in your code, the socket.io events will fire independently. 
+The plugin starts up a socket.io server on creation, when the end event from the bundle pipeline is triggered, the plugin will prepend a script to the bundle using node streams. The socket.io file is an immeditely invoked function expression that injects the socket.io-client script to the head of the document. This way if any errors occur in your code, the socket.io events will fire independently. 
 
 Do not use this in production, this is for development purposes only. Be sure to bundle your application for production without this plugin. 
