@@ -33,6 +33,7 @@ $ watchify -p [ browserify-livereload --host 127.0.0.1 --port 1337 ] index.js -o
 
 ##### API
 ```js
+const path = require('path')
 const browserify = require('browserify')
 const livereload = require('browserify-livereload')
 
@@ -45,16 +46,16 @@ const b = browserify({
 
 b.plugin(livereload, {
     host: 'localhost',
-    port: 1337
+    port: 1337,
+    outfile: path.join(__dirname, 'src', 'bundle.js') /* this option is not optional if using API mode */
 })
 ```
 
 How it Works
 -----------
-When browserify installs the plugin, a socket.io server is created. By default, it is created on `http://localhost:3001`. However, the host and port options are configurable. The plugin then injects the [host/port](https://github.com/traducer/browserify-livereload/blob/master/lib/index.js#L15-L18) into a [client.js](https://github.com/traducer/browserify-livereload/blob/master/lib/socket-client.js) script. This script then gets added to your browserify entries path and gets included in your bundle. This means wherever you use your bundle, the browser will be connecting to your socket.io server created by the plugin. This makes the plugin server agnostic. You can use any server to serve your static files, this does not come with a built-in static server and you do not need to include any separate scripts into your `index.html` file, it will be included with the bundle.js.
+The plugin checks for an outfile option if using API, if running browserify/watchify from the command line you do not need to add an outfile option as it is required from browserify.
+The plugin will watch for bundle events, watch for the end event on the bundle pipeline. The plugin starts up a socket.io server on creation, when the end event from the bundle pipeline
+is triggered, the plugin will prepend a script the bundle using node streams. The socket.io file is an immeditely invoked function expression that injects the socket.io-client script to the head
+of the document. This way if any errors occur in your code, the socket.io events will fire independently. 
 
-Because of this, it is strictly for development purposes. Be sure to rebundle your application without this plugin when you're ready for production. 
-
-Whenever browserify fires a bundle event the script will listen for the end event of the bundle's stream and fire a socket.io event to the client, triggering `window.location.reload()`.
-
-Because this only listens for bundle events, it does not come included with a file watcher. Use  [watchify](https://github.com/substack/watchify) with this plugin to get the full livereload effect.
+Do not use this in production, this is for development purposes only. Be sure to bundle your application for production without this plugin. 
